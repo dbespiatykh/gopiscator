@@ -1,5 +1,6 @@
-<img align ="center" src=logo.png width=420px style="padding-right: 25px; padding-top: 0x;">
-<br/><br/>
+<p align="center">
+  <img src="logo.png" alt="gopiscator Logo" height=350>
+</p>
 <hr>
 
 `GOpiscator` is a command-line tool for performing gene set enrichment analysis using the Gene Ontology (GO) database.
