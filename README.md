@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" alt="gopiscator Logo" height=350>
+  <img src="logo.png" alt="gopiscator Logo" height=300>
 </p>
 <hr>
 
