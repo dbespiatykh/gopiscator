@@ -44,7 +44,7 @@ dependencies = [
 Homepage = "https://github.com/dbespiatykh/gopiscator"
 Documentation = "https://github.com/dbespiatykh/gopiscator"
 Issues = "https://github.com/dbespiatykh/gopiscator/issues"
-Repository = "https://github.com/dbespiatykh/gopiscator/rich-click"
+Repository = "https://github.com/dbespiatykh/gopiscator"
 
 [project.scripts]
 gopiscator = "gopiscator.cli:main"
@@ -67,10 +67,8 @@ exclude = [
     ".vscode",
     "__pypackages__",
     "_build",
-    "buck-out",
     "build",
     "dist",
-    "node_modules",
     "site-packages",
     "venv",
 ]
