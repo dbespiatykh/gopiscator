@@ -47,9 +47,12 @@ Options:
 >| Rv0003 |	GO:0009432,GO:0000731,GO:0006260 |
 >| Rv0005 |	GO:0046677,GO:0006265,GO:0006261 |
 
+<hr>
 
 > [!TIP]
-> If you do not provide `-o, --output` then the results will be shown in terminal like this:
+> <details>
+>  <summary>If you do not provide <code>-o, --output</code> then the results will be shown in terminal like this:</summary>
+>
 >```
 >╒════╤════════════╤════════════════════╤═══════════════════════════════╤═══════════╤════════════════════╤═══════════════╕
 >│    │ GOID       │ Ontology           │ GO_term_name                  │   P-value │   Enrichment_score │   Rich_factor │
@@ -59,8 +62,15 @@ Options:
 >│  1 │ GO:0098754 │ biological_process │ detoxification                │     0.015 │               1.82 │           0.2 │
 >╘════╧════════════╧════════════════════╧═══════════════════════════════╧═══════════╧════════════════════╧═══════════════╛
 >```
-> When the `-o, --output` is provided the the output file will look like this:
+>
+></details>
+>
+> <details>
+>  <summary>When the <code>-o, --output</code> is provided the the output file will look like this:</summary>
+>
 >| GOID       | Ontology           | GO_term_name                  | Definition                                                                                                                                                                                                                                                                                                                                                                                 | P-value    | FDR        | Enrichment_score | Fold_enrichment | Rich_factor | GeneRatio | BgRatio   | Count | Genes                                                         |
 >| ---------- | ------------------ | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | ---------- | ---------------- | --------------- | ----------- | --------- | --------- | ----- | ------------------------------------------------------------- |
 >| GO:0045926 | biological_process | negative regulation of growth | Any process that stops, prevents or reduces the rate or extent of growth, the increase in size or mass of all or part of an organism. [GOC:go_curators]                                                                                                                                                                                                                                    | 4.40E-05   | 0.00171655 | 4.35640751       | 9.81395349      | 0.1627907   | 7[35]     | 43[2110]  | 7     | Rv0299,Rv0609,Rv1114,Rv2010,Rv2866,Rv3384c,Rv3697c            |
 >| GO:0098754 | biological_process | detoxification                | Any process that reduces or removes the toxicity of a toxic substance. These may include transport of the toxic substance away from sensitive areas and to compartments or complexes whose purpose is sequestration of the toxic substance. [GOC:dos]                                                                                                                                      | 0.01503798 | 0.29324058 | 1.82281055       | 15.0714286      | 0.25        | 3[35]     | 12[2110]  | 3     | Rv1560,Rv2550c,Rv2801A                                        |
+>
+> </details>
