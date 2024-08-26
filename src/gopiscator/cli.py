@@ -48,6 +48,14 @@ VERSION = get_version("__init__.py")
     help="GO '.obo' file.",
 )
 @click.option(
+    "-b",
+    "--background-list",
+    "background_list",
+    type=click.Path(exists=True, file_okay=True, dir_okay=False, readable=True),
+    show_default="All genes from 'go-annotation' file",
+    help="Background gene list file.",
+)
+@click.option(
     "--threshold",
     "threshold",
     type=float,
@@ -63,11 +71,19 @@ VERSION = get_version("__init__.py")
     show_default=True,
     help="Minimum No. of genes annotated to the specific GO term.",
 )
-def main(annotation: str, gene_list: str, ontology: str, output: str, threshold: float, gene_count: int) -> None:
+def main(
+    annotation: str,
+    gene_list: str,
+    ontology: str,
+    output: str,
+    threshold: float,
+    gene_count: int,
+    background_list: str = None,
+) -> None:
     """
     GOpiscator (Tool for performing gene set enrichment analysis)
     """
-    results = calculate_fisher(annotation, gene_list, ontology, threshold, gene_count)
+    results = calculate_fisher(annotation, gene_list, ontology, threshold, gene_count, background_list)
 
     if output:
         save_results(results, output)

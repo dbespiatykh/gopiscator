@@ -13,11 +13,19 @@ from tabulate import tabulate
 from gopiscator.go_processing import add_go_term_details, process_go_annotations
 
 
-def read_data(go_file: str, genes_file: str, obo_file: str) -> Tuple[pd.DataFrame, pd.DataFrame, GODag]:
+def read_data(
+    go_file: str, genes_file: str, obo_file: str, background_file: str = None
+) -> Tuple[pd.DataFrame, pd.DataFrame, GODag]:
     """Read GO and genes data from files."""
     obodag = GODag(obo_file, optional_attrs=["def", "replaced_by"], load_obsolete=True, prt=None)
     go_df = pd.read_csv(go_file, sep="\t", names=["Geneid", "GOID"])
     genes_list = pd.read_csv(genes_file, sep="\t", names=["gene"])
+
+    # Read the background gene list if provided
+    if background_file:
+        background_genes = pd.read_csv(background_file, sep="\t", names=["gene"])
+        go_df = go_df[go_df["Geneid"].isin(background_genes["gene"])]
+
     return go_df, genes_list, obodag
 
 
@@ -159,15 +167,18 @@ def print_results(input_df: pd.DataFrame) -> None:
     print(f"\n{table}")
 
 
-def calculate_fisher(go_file: str, genes_file: str, obo_file: str, threshold: float, gene_count: int) -> pd.DataFrame:
+def calculate_fisher(
+    go_file: str, genes_file: str, obo_file: str, threshold: float, gene_count: int, background_file: str = None
+) -> pd.DataFrame:
     """Calculate Fisher's exact test for GO terms."""
-    go_df, genes_list, obodag = read_data(go_file, genes_file, obo_file)
+    go_df, genes_list, obodag = read_data(go_file, genes_file, obo_file, background_file)
     go_df = process_go_annotations(go_df, obodag)
     ontologies = get_ontologies(go_df, obodag)
 
     enriched_terms_list = []
 
     def concat_function(x):
+        """Concatenate genes from a term using a comma as a separator."""
         return ",".join(map(str, x.sort_values().unique()))
 
     for ontology, df in ontologies.items():
